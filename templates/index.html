@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#100b1d">
+    <title>SCORPIO STORE | Top Up Game</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/app.js') }}"
+            defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <a class="brand" href="#beranda">♏ SCORPIO STORE</a>
+
+        <nav>
+            <a href="#beranda">Beranda</a>
+            <a href="#games">Daftar Game</a>
+            <a href="#cara">Cara Top Up</a>
+        </nav>
+
+        <a href="#games" class="btn">Top Up Sekarang</a>
+    </header>
+
+    <main>
+        <section class="hero" id="beranda">
+            <div class="hero-content">
+                <span class="tag">TOP UP GAME • CEPAT • PRAKTIS</span>
+                <h1>LEVEL UP<br>YOUR <span>GAME.</span></h1>
+                <p>
+                    Temukan game favoritmu dan pilih paket yang tersedia
+                    di SCORPIO STORE.
+                </p>
+                <a href="#games" class="btn">Mulai Top Up ↗️</a>
+            </div>
+
+            <div class="hero-art">
+                <div class="symbol">♏</div>
+                <h2>SCORPIO STORE</h2>
+                <p>POWER UP YOUR GAME</p>
+            </div>
+        </section>
+
+        <section class="section" id="games">
+            <div class="section-heading">
+                <span class="tag">PILIHAN GAME</span>
+                <h2>Pilih Game Favoritmu</h2>
+                <p>Tekan kartu game untuk melanjutkan ke form top up.</p>
+            </div>
+
+            <input type="search" id="searchGame" class="search"
+                   placeholder="Cari game favoritmu..."
+                   aria-label="Cari game">
+
+            <div class="game-grid" id="gameList">
+                <button type="button" class="game-card"
+                        data-game="ml" aria-pressed="false">
+                    <img src="{{ url_for('static', filename='images/mobile-legends.jpg') }}"
+                         alt="Mobile Legends" class="game-image">
+                    <strong>Mobile Legends</strong>
+                    <small>Diamond</small>
+                    <span class="choose-label">Pilih Game ↗️</span>
+                </button>
+
+                <button type="button" class="game-card"
+                        data-game="naruto" aria-pressed="false">
+                    <img src="{{ url_for('static', filename='images/free-fire.jpg') }}"
+                         alt="Free Fire" class="game-image">
+                    <strong>Free Fire</strong>
+                    <small>Paket Game</small>
+                    <span class="choose-label">Pilih Game ↗️</span>
+                </button>
+
+                <button type="button" class="game-card"
+                        data-game="pubg" aria-pressed="false">
+                    <img src="{{ url_for('static', filename='images/pubg.jpg') }}"
+                         alt="PUBG Mobile" class="game-image">
+                    <strong>PUBG Mobile</strong>
+                    <small>UC</small>
+                    <span class="choose-label">Pilih Game ↗️</span>
+                </button>
+
+                <button type="button" class="game-card"
+                        data-game="hok" aria-pressed="false">
+                    <img src="{{ url_for('static', filename='images/honor-of-kings.jpg') }}"
+                         alt="Honor of Kings" class="game-image">
+                    <strong>Honor of Kings</strong>
+                    <small>Tokens</small>
+                    <span class="choose-label">Pilih Game ↗️</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="section order-section" id="pesanan">
+            <div class="section-heading">
+                <span class="tag">FORM PEMESANAN</span>
+                <h2>Form Top Up</h2>
+                <p>Isi data pemain dan pilih paket yang tersedia.</p>
+            </div>
+
+            <form id="orderForm">
+                <label for="game">Pilih Game</label>
+                <select id="game" required>
+                    <option value="">-- Pilih game --</option>
+                    <option value="ml">Mobile Legends</option>
+                    <option value="naruto">Naruto</option>
+                    <option value="pubg">PUBG Mobile</option>
+                    <option value="hok">Honor of Kings</option>
+                </select>
+
+                <label for="playerId">User ID / ID Pemain</label>
+                <input id="playerId" type="text"
+                       placeholder="Masukkan ID pemain" required>
+
+                <div id="serverField" class="hidden">
+                    <label for="serverId">Server ID</label>
+                    <input id="serverId" type="text"
+                           placeholder="Masukkan Server ID">
+                </div>
+
+                <label for="package">Pilih Nominal</label>
+                <select id="package" required>
+                    <option value="">Memuat paket...</option>
+                </select>
+
+                <label for="payment">Metode Pembayaran</label>
+                <select id="payment" required>
+                    <option value="">-- Pilih pembayaran --</option>
+                    <option value="qris">QRIS</option>
+                    <option value="ewallet">E-Wallet</option>
+                    <option value="virtual_account">Virtual Account</option>
+                </select>
+
+                <div class="order-summary">
+                    <span>Estimasi total</span>
+                    <strong id="totalPrice">Rp0</strong>
+                </div>
+
+                <button type="submit" class="btn submit-btn">
+                    Buat Pesanan
+                </button>
+
+                <p id="message" class="message" role="status"
+                   aria-live="polite"></p>
+
+                <p class="note">
+                    MODE UJI COBA. Pembayaran dan pengiriman item game
+                    belum aktif. Jangan mengirim uang sungguhan.
+                </p>
+            </form>
+        </section>
+
+        <section class="section" id="cara">
+            <div class="section-heading">
+                <span class="tag">LANGKAH MUDAH</span>
+                <h2>Cara Top Up</h2>
+                <p>Ikuti langkah sederhana berikut.</p>
+            </div>
+
+            <div class="steps">
+                <article>
+                    <b>01</b>
+                    <h3>Pilih Game</h3>
+                    <p>Pilih kartu game dan masukkan ID pemain.</p>
+                </article>
+                <article>
+                    <b>02</b>
+                    <h3>Pilih Paket</h3>
+                    <p>Tentukan paket dan metode pembayaran.</p>
+                </article>
+                <article>
+                    <b>03</b>
+                    <h3>Buat Pesanan</h3>
+                    <p>Simpan kode pesanan untuk pengecekan.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <strong>♏ SCORPIO STORE</strong>
+        <p>Website top up game © 2026</p>
+        <small>Proyek uji coba — pembayaran belum aktif.</small>
+    </footer>
+</body>
+</html>
